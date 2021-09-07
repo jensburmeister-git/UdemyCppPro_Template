@@ -51,15 +51,12 @@ target_link_libraries(new_executable PRIVATE ${LIBRARY_NAME})  # Link the execut
 
 ## Software Requirements
 
-- Windows package installer: [Chocolatey](https://chocolatey.org/)
-- Linux (Debian) package installer: apt-get
-- MacOS package installer: [brew](https://brew.sh/index_de)
 - CMake 3.16+
 - GNU Makefile
 - Doxygen
 - Conan
 - MSVC 2019 (or higher), G++9 (or higher), Clang++9 (or higher)
-- Code Covergae (only on GNU or Clang Compiler): lcov, gcovr
+- Code Covergae (only on GNU): lcov, gcovr
 
 ## Run CMake Targets
 
