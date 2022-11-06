@@ -16,15 +16,13 @@ endif
 
 COMPILERCALL = $(CXX) $(CXXFLAGS)
 
+CXX_SOURCES = $(wildcard *.cc)
+CXX_OBJECTS = $(patsubst %.cc, %.o, $(CXX_SOURCES))
+
 # Targets
-build: main.o my_lib.o
-	$(COMPILERCALL) main.o my_lib.o -o $(EXECUTABLE_NAME)
-
-main.o:
-	$(COMPILERCALL) main.cc -c
-
-my_lib.o:
-	$(COMPILERCALL) my_lib.cc -c
+build: $(CXX_OBJECTS)
+	echo $(CXX_SOURCES)
+	$(COMPILERCALL) $(CXX_OBJECTS) -o $(EXECUTABLE_NAME)
 
 execute: build
 	./$(EXECUTABLE_NAME)
@@ -32,3 +30,7 @@ execute: build
 clean:
 	rm -f *.o
 	rm -f $(EXECUTABLE_NAME)
+
+# pattern
+%.o: %.cc
+	$(COMPILERCALL) -c $< -o $@
